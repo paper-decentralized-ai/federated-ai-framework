@@ -3,10 +3,8 @@ set -e
 set -o pipefail
 
 IMAGE_TAG="latest"
-#PLATFORM_ARG="--platform=linux/amd64,linux/arm64"
 PLATFORM_ARG=""
 SERVICES_ENV_PATH=".env.local"
-FRONTEND_ENV_PATH=".env.local"
 
 usage() {
   echo "Usage: $0 [--platform <platform>] [--tag <tag>]"
@@ -41,10 +39,6 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ "$IMAGE_TAG" == "nvidia" ]]; then
-  FRONTEND_ENV_PATH=".env.local-nvidia"
-fi
-
 if [ ! -f .env.config ]; then
   echo "Error: .env.config file not found"
   exit 1
@@ -58,9 +52,9 @@ if [ ! -f .env.docker.build-time ]; then
 fi
 source .env.docker.build-time
 
-GITLAB_DOCKER_REGISTRY_URL="${GITLAB_DOCKER_REGISTRY_HOST}${GITLAB_DOCKER_REGISTRY_PATH}"
+DOCKER_REGISTRY_URL="${DOCKER_REGISTRY_HOST}${DOCKER_REGISTRY_PATH}"
 
-echo "$GITLAB_DOCKER_REGISTRY_TOKEN" | docker login "$GITLAB_DOCKER_REGISTRY_HOST" -u "$GITLAB_DOCKER_REGISTRY_USERNAME" --password-stdin
+echo "$DOCKER_REGISTRY_TOKEN" | docker login "$DOCKER_REGISTRY_HOST" -u "$DOCKER_REGISTRY_USERNAME" --password-stdin
 
 if ! docker buildx inspect multiarch-builder > /dev/null 2>&1; then
   docker buildx create --use --name multiarch-builder --driver docker-container --driver-opt network=host
@@ -70,12 +64,12 @@ fi
 
 docker buildx inspect --bootstrap
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/department/mlflow-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../department/mlflow-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../department/mlflow-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/department/mlflow-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../department/mlflow-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../department/mlflow-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/department/institute-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../department/institute-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../department/institute-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/department/institute-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../department/institute-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../department/institute-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/department/federated-learning-management-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../department/federated-learning-management-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../department/federated-learning-management-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/department/federated-learning-management-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../department/federated-learning-management-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../department/federated-learning-management-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/frontend:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../frontend/docker/Dockerfile --build-arg ENV_PATH="$FRONTEND_ENV_PATH" --build-arg NPM_TOKEN="$GITLAB_TOKEN" ../frontend
+docker buildx build -t "${DOCKER_REGISTRY_URL}/frontend:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../frontend/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg NPM_TOKEN="$PACKAGE_REGISTRY_TOKEN" ../frontend
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/superexec:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../federated-learning-service/docker/superexec.uv.Dockerfile ../federated-learning-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/superexec:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../federated-learning-service/docker/superexec.uv.Dockerfile ../federated-learning-service

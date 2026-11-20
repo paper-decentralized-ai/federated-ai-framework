@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type {DocumentsApi, SectionsApi} from "@isin/data-service-client";
+import type {DocumentsApi, SectionsApi} from "@paper-decentralized-ai/data-service-client";
 
 interface DataApiContextType {
     documentsApi: DocumentsApi;

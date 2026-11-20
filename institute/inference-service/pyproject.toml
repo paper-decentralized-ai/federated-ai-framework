@@ -74,4 +74,3 @@ exclude_lines = [
 [[tool.uv.index]]
 name = "gitlab"
 url = "https://gitlab-edu.supsi.ch/api/v4/projects/1401/packages/pypi/simple"
-authenticate = "always"

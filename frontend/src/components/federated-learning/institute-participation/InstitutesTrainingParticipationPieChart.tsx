@@ -6,7 +6,7 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
-import type { InstituteTrainingParticipationDTO } from "@isin/institute-service-client";
+import type { InstituteTrainingParticipationDTO } from "@paper-decentralized-ai/institute-service-client";
 
 interface InstitutesTrainingParticipationPieChartProps {
     institutesTrainingParticipation: InstituteTrainingParticipationDTO[];

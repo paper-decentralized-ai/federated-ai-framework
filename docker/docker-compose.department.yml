@@ -20,7 +20,7 @@ services:
       - external
 
   superexec-serverapp:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/superexec:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/superexec:${DOCKER_IMAGE_TAG}
     container_name: superexec-serverapp
     environment:
       MLFLOW_SERVICE_URL: http://mlflow-service:9010
@@ -152,7 +152,7 @@ services:
       - external
 
   mlflow-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/department/mlflow-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/department/mlflow-service:${DOCKER_IMAGE_TAG}
     restart: always
     ports:
       - "9010:9010"
@@ -180,7 +180,7 @@ services:
               capabilities: [ gpu ]
 
   institute-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/department/institute-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/department/institute-service:${DOCKER_IMAGE_TAG}
     restart: always
     ports:
       - "9020:9020"
@@ -207,7 +207,7 @@ services:
       - external
 
   federated-learning-management-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/department/federated-learning-management-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/department/federated-learning-management-service:${DOCKER_IMAGE_TAG}
     restart: always
     ports:
       - "9015:9015"
@@ -236,7 +236,7 @@ services:
       - external
 
   federated-learning-management-service-worker:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/department/federated-learning-management-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/department/federated-learning-management-service:${DOCKER_IMAGE_TAG}
     working_dir: /app
     environment:
       KEYCLOAK_URL: ${KEYCLOAK_URL:-http://keycloak:8086}
@@ -257,7 +257,7 @@ services:
       - internal
 
   federated-learning-management-service-flower:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/department/federated-learning-management-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/department/federated-learning-management-service:${DOCKER_IMAGE_TAG}
     working_dir: /app
     environment:
       KEYCLOAK_URL: ${KEYCLOAK_URL:-http://keycloak:8086}
@@ -281,7 +281,7 @@ services:
       - external
 
   frontend:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/frontend:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/frontend:${DOCKER_IMAGE_TAG}
     environment:
       MLFLOW_SERVICE_URL: http://mlflow-service:9010
       INSTITUTE_SERVICE_URL: http://institute-service:9020
@@ -328,5 +328,6 @@ networks:
     driver: bridge
     internal: true
   external:
+    name: external
     driver: bridge
     internal: false

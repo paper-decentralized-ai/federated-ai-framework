@@ -22,7 +22,7 @@ scp -i "${SSH_KEY}" "${LOCAL_DOCKER_COMPOSE_ENV_FILE_PATH}" "${REMOTE_USER}@${RE
 scp -i "${SSH_KEY}" "${LOCAL_DOCKER_COMPOSE_PATH}" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_BASE_PATH}/docker-compose.yml"
 #ssh -i "${SSH_KEY}" "${REMOTE_USER}@${REMOTE_HOST}" "rm -rf ${REMOTE_BASE_PATH}/keycloak-initial-configuration"
 #scp -i "${SSH_KEY}" -r "${LOCAL_KEYCLOAK_INITIAL_CONFIGURATION_PATH}" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_BASE_PATH}"
-ssh -i "${SSH_KEY}" "${REMOTE_USER}@${REMOTE_HOST}" " echo '${GITLAB_DOCKER_REGISTRY_TOKEN}' | docker login '${GITLAB_DOCKER_REGISTRY_HOST}' -u '${GITLAB_DOCKER_REGISTRY_USERNAME}' --password-stdin"
+ssh -i "${SSH_KEY}" "${REMOTE_USER}@${REMOTE_HOST}" " echo '${DOCKER_REGISTRY_TOKEN}' | docker login '${DOCKER_REGISTRY_HOST}' -u '${DOCKER_REGISTRY_USERNAME}' --password-stdin"
 ssh -i "${SSH_KEY}" "${REMOTE_USER}@${REMOTE_HOST}" "cd '${REMOTE_BASE_PATH}' ; docker compose down"
 ssh -i "${SSH_KEY}" "${REMOTE_USER}@${REMOTE_HOST}" "docker rmi \$(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'decentralised-')"
 ssh -i "${SSH_KEY}" "${REMOTE_USER}@${REMOTE_HOST}" "cd '${REMOTE_BASE_PATH}' ; docker compose up -d"

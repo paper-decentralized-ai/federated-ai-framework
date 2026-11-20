@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { SectionDTO } from "@isin/data-service-client";
+import type { SectionDTO } from "@paper-decentralized-ai/data-service-client";
 import { SectionRow } from "./SectionRow";
 import { useTranslation } from "react-i18next";
 import { ChevronDown, ChevronUp, LayoutList } from "lucide-react";

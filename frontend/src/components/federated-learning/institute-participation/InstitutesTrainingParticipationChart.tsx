@@ -1,5 +1,5 @@
 import {Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
-import type {InstituteTrainingParticipationDTO} from "@isin/institute-service-client";
+import type {InstituteTrainingParticipationDTO} from "@paper-decentralized-ai/institute-service-client";
 import {InstitutesTrainingParticipationChartCustomTooltip} from "./InstitutesTrainingParticipationChartCustomTooltip.tsx";
 import type {BarShapeProps} from "recharts/types/cartesian/Bar";
 import {useEffect, useState} from "react";

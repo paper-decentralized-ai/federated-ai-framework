@@ -155,26 +155,26 @@ uv sync
 flwr build
 ```
 
-This produces a file named `luca-fanto.federated-learning-service.<version>.fab` in the current directory.
+This produces a file named `paper-decentralized-ai.federated-learning-service.<version>.fab` in the current directory.
 
 ```bash
 # 2. Copy the .fab into the FL management service
-cp luca-fanto.federated-learning-service.*.fab \
+cp paper-decentralized-ai.federated-learning-service.*.fab \
    ../department/federated-learning-management-service/flwr/fab/
 ```
 
 ```bash
 # 3. Install the FAB so Flower can find the app
 cd ../department/federated-learning-management-service/flwr
-flwr install fab/luca-fanto.federated-learning-service.<version>.fab --flwr-dir .
+flwr install fab/paper-decentralized-ai.federated-learning-service.<version>.fab --flwr-dir .
 ```
 
-This creates the app directory under `./apps/luca-fanto.federated-learning-service.<version>/`.
+This creates the app directory under `./apps/paper-decentralized-ai.federated-learning-service.<version>/`.
 
 ```bash
 # 4. Copy the federated-learning-service pyproject.toml into the installed app
 cp ../../../federated-learning-service/pyproject.toml \
-   apps/luca-fanto.federated-learning-service.<version>/pyproject.toml
+   apps/paper-decentralized-ai.federated-learning-service.<version>/pyproject.toml
 ```
 
 > Replace `<version>` with the actual version string (e.g. `0.1.0`). After step 3 you can check the exact folder name with `ls apps/`.
@@ -188,7 +188,7 @@ The frontend Docker image is built with the TypeScript API clients pre-installed
 ```bash
 cd deployment/apis
 cp .env.template .env.config
-# fill in UV_INDEX_GITLAB_USERNAME, UV_INDEX_GITLAB_PASSWORD, GITLAB_TOKEN
+# fill in UV_INDEX_GITLAB_USERNAME, UV_INDEX_GITLAB_PASSWORD, PACKAGE_REGISTRY_TOKEN
 ./sync-apis.sh
 ```
 

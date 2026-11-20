@@ -7,7 +7,7 @@ vi.mock('../axios', () => ({
 describe('instituteServiceClient', () => {
     beforeEach(() => {
         vi.resetModules();
-        vi.doMock('@isin/institute-service-client', () => ({
+        vi.doMock('@paper-decentralized-ai/institute-service-client', () => ({
             Configuration: vi.fn().mockImplementation(function (this: object, opts: object) {
                 Object.assign(this, opts);
             }),
@@ -23,13 +23,13 @@ describe('instituteServiceClient', () => {
     });
 
     it('InstituteApi is constructed once', async () => {
-        const { InstituteApi } = await import('@isin/institute-service-client');
+        const { InstituteApi } = await import('@paper-decentralized-ai/institute-service-client');
         await import('../instituteServiceClient');
         expect(InstituteApi).toHaveBeenCalledOnce();
     });
 
     it('Configuration is called with empty basePath', async () => {
-        const { Configuration } = await import('@isin/institute-service-client');
+        const { Configuration } = await import('@paper-decentralized-ai/institute-service-client');
         await import('../instituteServiceClient');
         const callArg = vi.mocked(Configuration).mock.calls[0]?.[0] as { basePath: string };
         expect(callArg?.basePath).toBe('');

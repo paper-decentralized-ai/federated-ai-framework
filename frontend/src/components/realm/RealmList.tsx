@@ -1,4 +1,4 @@
-import type {InstituteDTO} from "@isin/institute-service-client";
+import type {InstituteDTO} from "@paper-decentralized-ai/institute-service-client";
 import { motion } from "framer-motion";
 import {RealmCard} from "./RealmCard.tsx";
 

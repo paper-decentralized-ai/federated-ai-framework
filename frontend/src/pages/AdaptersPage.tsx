@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import {AdaptersList} from "../components/adapters/institute/AdaptersList.tsx";
 import {useGetAllAvailableAdapters} from "../hooks/institute/model/useGetAllAvailableAdapters.ts";
 import {getModelKey} from "../utils/envUtils.ts";
-import type {AdapterDTO} from "@isin/model-service-client";
+import type {AdapterDTO} from "@paper-decentralized-ai/model-service-client";
 import {motion} from "framer-motion";
 import {Cpu} from "lucide-react";
 import {LoadingSkeleton} from "../components/common/LoadingSkeleton.tsx";

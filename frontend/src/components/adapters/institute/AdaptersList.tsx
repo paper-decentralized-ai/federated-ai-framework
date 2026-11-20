@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
 import { SortDesc, SortAsc, Inbox } from "lucide-react";
-import type { AdapterDTO } from "@isin/model-service-client";
+import type { AdapterDTO } from "@paper-decentralized-ai/model-service-client";
 import { AdapterCard } from "./AdapterCard.tsx";
 import { useReducedMotion } from "../../../hooks/useReducedMotion";
 

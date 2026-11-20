@@ -3,7 +3,6 @@ set -e
 set -o pipefail
 
 IMAGE_TAG="latest"
-#PLATFORM_ARG="--platform=linux/amd64,linux/arm64"
 PLATFORM_ARG=""
 SERVICES_ENV_PATH=".env.local"
 
@@ -53,9 +52,9 @@ if [ ! -f .env.docker.build-time ]; then
 fi
 source .env.docker.build-time
 
-GITLAB_DOCKER_REGISTRY_URL="${GITLAB_DOCKER_REGISTRY_HOST}${GITLAB_DOCKER_REGISTRY_PATH}"
+DOCKER_REGISTRY_URL="${DOCKER_REGISTRY_HOST}${DOCKER_REGISTRY_PATH}"
 
-echo "$GITLAB_DOCKER_REGISTRY_TOKEN" | docker login "$GITLAB_DOCKER_REGISTRY_HOST" -u "$GITLAB_DOCKER_REGISTRY_USERNAME" --password-stdin
+echo "$DOCKER_REGISTRY_TOKEN" | docker login "$DOCKER_REGISTRY_HOST" -u "$DOCKER_REGISTRY_USERNAME" --password-stdin
 
 if ! docker buildx inspect multiarch-builder > /dev/null 2>&1; then
   docker buildx create --use --name multiarch-builder --driver docker-container --driver-opt network=host
@@ -65,14 +64,14 @@ fi
 
 docker buildx inspect --bootstrap
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/institute/chat-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/chat-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/chat-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/institute/chat-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/chat-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/chat-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/institute/data-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/data-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/data-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/institute/data-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/data-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/data-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/institute/inference-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/inference-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/inference-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/institute/inference-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/inference-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/inference-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/institute/model-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/model-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/model-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/institute/model-service:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/model-service/docker/Dockerfile --build-arg ENV_PATH="$SERVICES_ENV_PATH" --build-arg UV_INDEX_GITLAB_USERNAME="$UV_INDEX_GITLAB_USERNAME" --build-arg UV_INDEX_GITLAB_PASSWORD="$UV_INDEX_GITLAB_PASSWORD" ../institute/model-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/institute/nginx:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/nginx-service/docker/Dockerfile ../institute/nginx-service
+docker buildx build -t "${DOCKER_REGISTRY_URL}/institute/nginx:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../institute/nginx-service/docker/Dockerfile ../institute/nginx-service
 
-docker buildx build -t "${GITLAB_DOCKER_REGISTRY_URL}/superexec:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../federated-learning-service/docker/superexec.uv.Dockerfile ../federated-learning-service
+#docker buildx build -t "${DOCKER_REGISTRY_URL}/superexec:${IMAGE_TAG}" $PLATFORM_ARG --push --provenance=false --sbom=false -f ../federated-learning-service/docker/superexec.uv.Dockerfile ../federated-learning-service

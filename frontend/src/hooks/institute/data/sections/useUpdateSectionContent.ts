@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import type {DocumentDTO, SectionDTO} from "@isin/data-service-client";
+import type {DocumentDTO, SectionDTO} from "@paper-decentralized-ai/data-service-client";
 import {useDataApi} from "../../../api/useDataApi.ts";
 
 interface UpdateSectionContentParams {

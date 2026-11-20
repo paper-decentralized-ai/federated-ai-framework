@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import type {DocumentDTO} from "@isin/data-service-client";
+import type {DocumentDTO} from "@paper-decentralized-ai/data-service-client";
 import {useDataApi} from "../../../api/useDataApi.ts";
 
 export const useGetDocumentById = (documentId: number) => {

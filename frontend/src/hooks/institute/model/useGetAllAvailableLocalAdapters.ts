@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import type {AvailableAdaptersDTO} from "@isin/model-service-client";
+import type {AvailableAdaptersDTO} from "@paper-decentralized-ai/model-service-client";
 import {useModelApi} from "../../api/useModelApi.ts";
 
 export const useGetAllAvailableLocalAdapters = (modelKey: string) => {

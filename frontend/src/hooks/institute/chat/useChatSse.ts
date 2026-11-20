@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import {useQueryClient} from "@tanstack/react-query";
 import {getChatSseUrl} from "../../../utils/sse/sseUrls.ts";
 import {useAuthWrapper} from "../../auth/useAuthWrapper.ts";
-import type {ChatDTO, MessageDTO} from "@isin/chat-service-client";
+import type {ChatDTO, MessageDTO} from "@paper-decentralized-ai/chat-service-client";
 import {useApiBasePath} from "../../api/useApiBasePath.ts";
 
 export const useChatSse = () => {

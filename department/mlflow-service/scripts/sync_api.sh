@@ -5,7 +5,7 @@ SERVICE_NAME="mlflow-service"
 SDKS_DIR="../sdks"
 CLIENT_DIR="${SDKS_DIR}/${SERVICE_NAME}-client"
 OPENAPI_JSON_PATH="${SDKS_DIR}/openapi.json"
-NPM_SCOPE="@isin"
+NPM_SCOPE="@paper-decentralized-ai"
 
 echo "Cleaning previous client..."
 rm -rf "$SDKS_DIR"
@@ -37,6 +37,7 @@ docker run --rm \
 
 echo "Building TypeScript..."
 cd "$CLIENT_DIR"
+npm pkg set dependencies.axios="1.18.1"
 npm install
 npm run build
 

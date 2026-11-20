@@ -1,4 +1,4 @@
-import type {SectionDTO} from "@isin/data-service-client";
+import type {SectionDTO} from "@paper-decentralized-ai/data-service-client";
 import {AnimatePresence, motion} from "framer-motion";
 import {ChevronDown, Pencil, X} from "lucide-react";
 import {useState} from "react";

@@ -3,7 +3,7 @@ import { Building, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import {useCreateInstitute} from "../../hooks/department/institutes/useCreateInstitute.ts";
 import toast from "react-hot-toast";
-import type {InstituteCreationRequestDTO} from "@isin/institute-service-client";
+import type {InstituteCreationRequestDTO} from "@paper-decentralized-ai/institute-service-client";
 
 export const CreateRealmModal = ({ isOpen, onClose }: any) => {
     const [form, setForm] = useState<InstituteCreationRequestDTO>({ name: "", url: "" });

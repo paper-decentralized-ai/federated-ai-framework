@@ -315,7 +315,7 @@ services:
       dockerfile: docker/Dockerfile
       args:
         ENV_PATH: .env.local
-        NPM_TOKEN: ${GITLAB_TOKEN}
+        NPM_TOKEN: ${PACKAGE_REGISTRY_TOKEN}
     environment:
       MLFLOW_SERVICE_URL: http://mlflow-service:9010
       INSTITUTE_SERVICE_URL: http://institute-service:9020

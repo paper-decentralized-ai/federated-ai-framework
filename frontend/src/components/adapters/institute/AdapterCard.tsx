@@ -1,6 +1,6 @@
 import { Download, CheckCircle, Cloud } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import type { AdapterDTO } from "@isin/model-service-client";
+import type { AdapterDTO } from "@paper-decentralized-ai/model-service-client";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "../../../hooks/useReducedMotion";
 import {useState} from "react";

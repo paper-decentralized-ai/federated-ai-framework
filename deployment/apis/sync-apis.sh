@@ -12,7 +12,7 @@ set +a
 npm_install() {
     REGISTRY="$1"
     PACKAGE_NAME="$2"
-    DEV_VERSION="$3"
+    VERSION="$3"
 
     max_attempts=5
     attempt=1
@@ -22,7 +22,7 @@ npm_install() {
     while [ $attempt -le $max_attempts ]; do
         echo "Attempt $attempt..."
 
-        if npm install --prefer-online --registry "$REGISTRY" "${PACKAGE_NAME}@${DEV_VERSION}"; then
+        if npm install --prefer-online --registry "$REGISTRY" "${PACKAGE_NAME}@${VERSION}"; then
             echo "Install succeeded"
             return 0
         fi
@@ -50,31 +50,31 @@ publish_sdk() {
     cd "$SERVICE_PATH/scripts" && ./sync_api.sh
 
     VERSION=$(jq -r '.info.version' "../sdks/openapi.json")
-    echo "Version from toml: $VERSION"
-    TIMESTAMP=$(date +%s)
-    DEV_VERSION="$VERSION-dev.$TIMESTAMP"
+#    echo "Version from toml: $VERSION"
+#    TIMESTAMP=$(date +%s)
+#    DEV_VERSION="$VERSION-dev.$TIMESTAMP"
 
     cd "../sdks/$CLIENT_NAME"
-    npm version "$DEV_VERSION" --no-git-tag-version
+    #npm version "$VERSION" --no-git-tag-version
 
     REGISTRY="https://gitlab-edu.supsi.ch/api/v4/projects/1401/packages/npm/"
-    echo "@isin:registry=${REGISTRY}" > .npmrc
-    echo "//gitlab-edu.supsi.ch/api/v4/projects/1401/packages/npm/:_authToken=${GITLAB_TOKEN}" >> .npmrc
+    echo "@paper-decentralized-ai:registry=${REGISTRY}" > .npmrc
+    echo "//gitlab-edu.supsi.ch/api/v4/projects/1401/packages/npm/:_authToken=${PACKAGE_REGISTRY_TOKEN}" >> .npmrc
 
-    npm publish --tag dev --registry "$REGISTRY"
+    npm publish --tag prod --registry "$REGISTRY"
 
     cd ../../../../frontend
-    PACKAGE_NAME="@isin/${CLIENT_NAME}"
+    PACKAGE_NAME="@paper-decentralized-ai/${CLIENT_NAME}"
 
-    #if wait_for_npm_package "$PACKAGE_NAME" "$DEV_VERSION" "$REGISTRY"; then
+    #if wait_for_npm_package "$PACKAGE_NAME" "$VERSION" "$REGISTRY"; then
     echo "Installing from registry..."
-    npm_install "$REGISTRY" "$PACKAGE_NAME" "$DEV_VERSION"
+    npm_install "$REGISTRY" "$PACKAGE_NAME" "$VERSION"
     #else
      # echo "Registry lookup failed; client package is not reachable from GitLab Package Registry."
      # exit 1
     #fi
   )
-  echo "Published $CLIENT_NAME@$DEV_VERSION"
+  echo "Published $CLIENT_NAME@$VERSION"
 }
 
 publish_sdk "../../institute/data-service" "data-service-client"

@@ -7,7 +7,7 @@ vi.mock('../axios', () => ({
 describe('mlflowServiceClient', () => {
     beforeEach(() => {
         vi.resetModules();
-        vi.doMock('@isin/mlflow-service-client', () => ({
+        vi.doMock('@paper-decentralized-ai/mlflow-service-client', () => ({
             Configuration: vi.fn().mockImplementation(function (this: object, opts: object) {
                 Object.assign(this, opts);
             }),
@@ -23,13 +23,13 @@ describe('mlflowServiceClient', () => {
     });
 
     it('AdapterApi is constructed once', async () => {
-        const { AdapterApi } = await import('@isin/mlflow-service-client');
+        const { AdapterApi } = await import('@paper-decentralized-ai/mlflow-service-client');
         await import('../mlflowServiceClient');
         expect(AdapterApi).toHaveBeenCalledOnce();
     });
 
     it('Configuration is called with empty basePath', async () => {
-        const { Configuration } = await import('@isin/mlflow-service-client');
+        const { Configuration } = await import('@paper-decentralized-ai/mlflow-service-client');
         await import('../mlflowServiceClient');
         const callArg = vi.mocked(Configuration).mock.calls[0]?.[0] as { basePath: string };
         expect(callArg?.basePath).toBe('');

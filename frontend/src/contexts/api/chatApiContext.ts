@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { ChatApi, MessagesApi } from "@isin/chat-service-client";
+import type { ChatApi, MessagesApi } from "@paper-decentralized-ai/chat-service-client";
 
 interface ChatApiContextType {
     chatApi: ChatApi;

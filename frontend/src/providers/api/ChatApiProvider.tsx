@@ -1,6 +1,6 @@
 import {type ReactNode, useMemo} from "react";
 import {useApiBasePath} from "../../hooks/api/useApiBasePath.ts";
-import {ChatApi, Configuration, MessagesApi} from "@isin/chat-service-client";
+import {ChatApi, Configuration, MessagesApi} from "@paper-decentralized-ai/chat-service-client";
 import {axiosInstance} from "../../config/axios.ts";
 import { ChatApiContext } from "../../contexts/api/chatApiContext.ts";
 

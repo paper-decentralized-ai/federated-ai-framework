@@ -1,6 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
 import {departmentAdaptersApi} from "../../../config/mlflowServiceClient.ts";
-import type {ModelAdaptersVersionDTO} from "@isin/mlflow-service-client";
+import type {ModelAdaptersVersionDTO} from "@paper-decentralized-ai/mlflow-service-client";
 
 export const useGetAllDepartmentAdapters = (modelKey: string) => {
     return useQuery<ModelAdaptersVersionDTO, Error>({

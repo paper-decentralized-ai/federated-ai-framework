@@ -784,7 +784,7 @@ wheels = [
 
 [[package]]
 name = "shared-auth-library"
-version = "0.1.0"
+version = "1.0.0"
 source = { directory = "../../shared-auth-library" }
 dependencies = [
     { name = "fastapi" },

@@ -2,7 +2,7 @@ import {type ReactNode, useMemo} from "react";
 import {useApiBasePath} from "../../hooks/api/useApiBasePath.ts";
 import {axiosInstance} from "../../config/axios.ts";
 import {DataApiContext} from "../../contexts/api/dataApiContext.ts";
-import {DocumentsApi, SectionsApi, Configuration} from "@isin/data-service-client";
+import {DocumentsApi, SectionsApi, Configuration} from "@paper-decentralized-ai/data-service-client";
 
 interface DataApiProviderProps {
     children: ReactNode;

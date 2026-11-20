@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import {useQueryClient} from "@tanstack/react-query";
 import {getFederatedLearningJobSseUrl} from "../../../utils/sse/sseUrls.ts";
-import type {FederatedLearningJobDTO} from "@isin/federated-learning-management-service-client";
+import type {FederatedLearningJobDTO} from "@paper-decentralized-ai/federated-learning-management-service-client";
 
 export const useFederatedLearningJobSse = () => {
     const queryClient = useQueryClient();

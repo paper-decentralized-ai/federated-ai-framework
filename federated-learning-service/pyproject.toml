@@ -42,7 +42,7 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [tool.flwr.app]
-publisher = "luca-fanto"
+publisher = "paper-decentralized-ai"
 
 [tool.flwr.app.components]
 serverapp = "src.server_app:app"

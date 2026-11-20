@@ -1,4 +1,4 @@
-import type {InstituteTrainingParticipationDTO} from "@isin/institute-service-client";
+import type {InstituteTrainingParticipationDTO} from "@paper-decentralized-ai/institute-service-client";
 import {useTranslation} from "react-i18next";
 import {useMemo, useState} from "react";
 import {ChevronDown, ChevronUp} from "lucide-react";

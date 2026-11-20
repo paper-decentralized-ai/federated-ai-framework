@@ -1,4 +1,4 @@
-import {Configuration, InstituteApi} from "@isin/institute-service-client"
+import {Configuration, InstituteApi} from "@paper-decentralized-ai/institute-service-client"
 import {axiosInstance} from "./axios.ts";
 
 const config = new Configuration({

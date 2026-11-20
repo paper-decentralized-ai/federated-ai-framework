@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import type {FederatedLearningJobDTO} from "@isin/federated-learning-management-service-client";
+import type {FederatedLearningJobDTO} from "@paper-decentralized-ai/federated-learning-management-service-client";
 import {federatedLearningJobsApi} from "../../../config/federatedLearningManagementServiceClient.ts";
 
 export const useStartFederatedLearning = () => {

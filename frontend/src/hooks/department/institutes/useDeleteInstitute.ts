@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {instituteApi} from "../../../config/instituteServiceClient.ts";
-import type {InstituteDTO} from "@isin/institute-service-client";
+import type {InstituteDTO} from "@paper-decentralized-ai/institute-service-client";
 
 export const useDeleteInstitute = () => {
     const queryClient = useQueryClient();

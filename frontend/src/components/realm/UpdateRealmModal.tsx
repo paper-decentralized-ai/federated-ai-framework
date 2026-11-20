@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Building, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
-import type { InstituteDTO } from "@isin/institute-service-client";
+import type { InstituteDTO } from "@paper-decentralized-ai/institute-service-client";
 import { useUpdateInstitute } from "../../hooks/department/institutes/useUpdateInstitute.ts";
 
 interface UpdateRealmModalProps {

@@ -5,7 +5,7 @@ ARG ENV_PATH=.env.local
 
 WORKDIR /app
 
-RUN echo "@isin:registry=https://gitlab-edu.supsi.ch/api/v4/projects/1401/packages/npm/" > .npmrc
+RUN echo "@paper-decentralized-ai:registry=https://gitlab-edu.supsi.ch/api/v4/projects/1401/packages/npm/" > .npmrc
 RUN echo "//gitlab-edu.supsi.ch/api/v4/projects/1401/packages/npm/:_authToken=${NPM_TOKEN}" >> .npmrc
 
 COPY package.json .

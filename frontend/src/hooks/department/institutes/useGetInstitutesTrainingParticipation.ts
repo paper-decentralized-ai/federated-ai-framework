@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import type {InstituteTrainingParticipationDTO} from "@isin/institute-service-client";
+import type {InstituteTrainingParticipationDTO} from "@paper-decentralized-ai/institute-service-client";
 import {instituteApi} from "../../../config/instituteServiceClient.ts";
 
 export const useGetInstitutesTrainingParticipation = () => {

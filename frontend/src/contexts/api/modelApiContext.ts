@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type {AdaptersApi} from "@isin/model-service-client";
+import type {AdaptersApi} from "@paper-decentralized-ai/model-service-client";
 
 interface ModelApiContextType {
     adaptersApi: AdaptersApi;

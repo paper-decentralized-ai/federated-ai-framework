@@ -1,5 +1,5 @@
 import {useMemo, useState} from "react";
-import type {FederatedLearningJobDTO} from "@isin/federated-learning-management-service-client";
+import type {FederatedLearningJobDTO} from "@paper-decentralized-ai/federated-learning-management-service-client";
 import {FederatedLearningJobRow} from "./FederatedLearningJobRow.tsx";
 import {ChevronDown, ChevronUp} from "lucide-react";
 

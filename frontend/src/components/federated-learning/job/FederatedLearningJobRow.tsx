@@ -1,4 +1,4 @@
-import type {FederatedLearningJobDTO} from "@isin/federated-learning-management-service-client";
+import type {FederatedLearningJobDTO} from "@paper-decentralized-ai/federated-learning-management-service-client";
 import {FederatedLearningJobStatusBadge} from "./FederatedLearningJobStatusBadge.tsx";
 
 interface FederatedLearningJobRowProps {

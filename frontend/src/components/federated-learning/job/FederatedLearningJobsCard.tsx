@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ChevronDown, ChevronUp, Network } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { FederatedLearningJobDTO } from "@isin/federated-learning-management-service-client";
+import type { FederatedLearningJobDTO } from "@paper-decentralized-ai/federated-learning-management-service-client";
 import { FederatedLearningJobsTable } from "./FederatedLearningJobsTable.tsx";
 import { EmptyState } from "../../common/EmptyState.tsx";
 

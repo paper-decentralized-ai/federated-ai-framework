@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronRight, Edit2, Globe, Loader2, Trash2 } from "lucide-react";
-import type { InstituteDTO } from "@isin/institute-service-client";
+import type { InstituteDTO } from "@paper-decentralized-ai/institute-service-client";
 import toast from "react-hot-toast";
 import { useDeleteInstitute } from "../../hooks/department/institutes/useDeleteInstitute.ts";
 import { useState } from "react";

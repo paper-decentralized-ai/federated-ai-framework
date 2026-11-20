@@ -1,6 +1,6 @@
 import {MessageSquare, Trash2} from "lucide-react";
 import {motion} from "framer-motion";
-import type {ChatDTO} from "@isin/chat-service-client";
+import type {ChatDTO} from "@paper-decentralized-ai/chat-service-client";
 
 interface ChatListItemProps {
     chat: ChatDTO;

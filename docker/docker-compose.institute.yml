@@ -50,7 +50,7 @@ services:
       - internal
 
   inference-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/institute/inference-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/institute/inference-service:${DOCKER_IMAGE_TAG}
     environment:
       INSTITUTE_NAME: ${INSTITUTE_NAME}
       KEYCLOAK_URL: ${KEYCLOAK_URL}
@@ -84,7 +84,7 @@ services:
               capabilities: [ gpu ]
 
   inference-service-worker:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/institute/inference-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/institute/inference-service:${DOCKER_IMAGE_TAG}
     working_dir: /app
     environment:
       INSTITUTE_NAME: ${INSTITUTE_NAME}
@@ -113,7 +113,7 @@ services:
               capabilities: [ gpu ]
 
   data-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/institute/data-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/institute/data-service:${DOCKER_IMAGE_TAG}
     environment:
       INSTITUTE_NAME: ${INSTITUTE_NAME}
       KEYCLOAK_URL: ${KEYCLOAK_URL}
@@ -139,7 +139,7 @@ services:
       - external
 
   model-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/institute/model-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/institute/model-service:${DOCKER_IMAGE_TAG}
     environment:
       INSTITUTE_NAME: ${INSTITUTE_NAME}
       KEYCLOAK_URL: ${KEYCLOAK_URL}
@@ -161,7 +161,7 @@ services:
       - external
 
   chat-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/institute/chat-service:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/institute/chat-service:${DOCKER_IMAGE_TAG}
     environment:
       INSTITUTE_NAME: ${INSTITUTE_NAME}
       KEYCLOAK_URL: ${KEYCLOAK_URL}
@@ -193,7 +193,7 @@ services:
       - external
 
   nginx-service:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/institute/nginx:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/institute/nginx:${DOCKER_IMAGE_TAG}
     environment:
       CHAT_SERVICE_URL: http://chat-service:8081
       DATA_SERVICE_URL: http://data-service:8080
@@ -238,7 +238,7 @@ services:
       - external
 
   superexec-clientapp:
-    image: gitlab-edu.supsi.ch:5050/dti-isin/giuliano.gremlich/progetti_master/2025-2026/luca-fanto/decentralised-ai/superexec:${DOCKER_IMAGE_TAG}
+    image: ${DOCKER_REGISTRY_URL}/superexec:${DOCKER_IMAGE_TAG}
     environment:
       DATA_SERVICE_URL: http://data-service:8080
       MODEL_SERVICE_URL: http://model-service:8090
@@ -282,5 +282,6 @@ networks:
     driver: bridge
     internal: true
   external:
+    name: external
     driver: bridge
     internal: false

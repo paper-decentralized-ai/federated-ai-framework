@@ -1,4 +1,4 @@
-import type {InstituteTrainingParticipationDTO} from "@isin/institute-service-client";
+import type {InstituteTrainingParticipationDTO} from "@paper-decentralized-ai/institute-service-client";
 import {useTranslation} from "react-i18next";
 import {WifiOff} from "lucide-react";
 import {formatEnum} from "../../../utils/enumUtils.ts";

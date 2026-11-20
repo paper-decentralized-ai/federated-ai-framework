@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import type {AdapterDTO, AvailableAdaptersDTO} from "@isin/model-service-client";
+import type {AdapterDTO, AvailableAdaptersDTO} from "@paper-decentralized-ai/model-service-client";
 import {useModelApi} from "../../api/useModelApi.ts";
 
 

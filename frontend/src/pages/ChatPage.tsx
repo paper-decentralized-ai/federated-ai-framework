@@ -11,7 +11,7 @@ import {EmptyChatState} from "../components/chat/EmptyChatState.tsx";
 import {useDeleteChat} from "../hooks/institute/chat/useDeleteChat.ts";
 import {DeleteConfirmModal} from "../components/common/DeleteConfirmModal.tsx";
 import toast from "react-hot-toast";
-import type {ChatDTO} from "@isin/chat-service-client";
+import type {ChatDTO} from "@paper-decentralized-ai/chat-service-client";
 import {useChatSse} from "../hooks/institute/chat/useChatSse.ts";
 
 export const ChatPage = () => {

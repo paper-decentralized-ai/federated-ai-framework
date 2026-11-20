@@ -9,7 +9,7 @@ vi.mock('../../../config/axios', () => ({
     axiosInstance: { defaults: { headers: { common: {} } } },
 }));
 
-vi.mock('@isin/model-service-client', () => ({
+vi.mock('@paper-decentralized-ai/model-service-client', () => ({
     Configuration: vi.fn().mockImplementation(function (this: object, opts: object) {
         Object.assign(this, opts);
     }),
@@ -49,7 +49,7 @@ describe('ModelApiProvider', () => {
     });
 
     it('creates Configuration with the provided basePath', async () => {
-        const { Configuration } = await import('@isin/model-service-client');
+        const { Configuration } = await import('@paper-decentralized-ai/model-service-client');
         renderProvider('http://model-base');
         expect(vi.mocked(Configuration)).toHaveBeenCalledWith(
             expect.objectContaining({ basePath: 'http://model-base' })

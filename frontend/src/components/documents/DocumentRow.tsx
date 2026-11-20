@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { DocumentDTO } from "@isin/data-service-client";
+import type { DocumentDTO } from "@paper-decentralized-ai/data-service-client";
 import { motion } from "framer-motion";
 import {FileText, Trash2, Eye, BrainCircuit, ShieldCheck} from "lucide-react";
 import { useDeleteDocument } from "../../hooks/institute/data/documents/useDeleteDocument.ts";

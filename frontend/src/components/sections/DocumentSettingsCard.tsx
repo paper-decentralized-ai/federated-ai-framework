@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import {AnimatePresence, motion} from "framer-motion";
 import {useTranslation} from "react-i18next";
-import type {DocumentDTO} from "@isin/data-service-client";
+import type {DocumentDTO} from "@paper-decentralized-ai/data-service-client";
 import {
     useUpdateDocumentExternalApproved
 } from "../../hooks/institute/data/documents/useUpdateDocumentExternalApproved.ts";

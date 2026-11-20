@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import {LayoutGrid, AlertCircle} from "lucide-react";
 import {useSelectorRealm} from "../hooks/realm/useSelectorRealm.ts";
 import {useGetAllInstitutes} from "../hooks/department/institutes/useGetAllInstitutes.ts";
-import type {InstituteDTO} from "@isin/institute-service-client";
+import type {InstituteDTO} from "@paper-decentralized-ai/institute-service-client";
 import {RealmList} from "../components/realm/RealmList.tsx";
 import {useAuthWrapper} from "../hooks/auth/useAuthWrapper.ts";
 import {useNavigate} from "react-router-dom";

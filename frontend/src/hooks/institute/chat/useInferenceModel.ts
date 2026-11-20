@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import type {MessageDTO} from "@isin/chat-service-client";
+import type {MessageDTO} from "@paper-decentralized-ai/chat-service-client";
 import {useChatApi} from "../../api/useChatApi.ts";
 
 export interface InferenceModelParams {

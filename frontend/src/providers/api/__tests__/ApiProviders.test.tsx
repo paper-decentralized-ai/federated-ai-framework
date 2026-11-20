@@ -18,19 +18,19 @@ vi.mock('../../../config/axios', () => ({
     axiosInstance: { defaults: { headers: { common: {} } } },
 }));
 
-vi.mock('@isin/chat-service-client', () => ({
+vi.mock('@paper-decentralized-ai/chat-service-client', () => ({
     Configuration: vi.fn().mockImplementation(function (this: object) {}),
     ChatApi: vi.fn().mockImplementation(function (this: object) {}),
     MessagesApi: vi.fn().mockImplementation(function (this: object) {}),
 }));
 
-vi.mock('@isin/data-service-client', () => ({
+vi.mock('@paper-decentralized-ai/data-service-client', () => ({
     Configuration: vi.fn().mockImplementation(function (this: object) {}),
     DocumentsApi: vi.fn().mockImplementation(function (this: object) {}),
     SectionsApi: vi.fn().mockImplementation(function (this: object) {}),
 }));
 
-vi.mock('@isin/model-service-client', () => ({
+vi.mock('@paper-decentralized-ai/model-service-client', () => ({
     Configuration: vi.fn().mockImplementation(function (this: object) {}),
     AdaptersApi: vi.fn().mockImplementation(function (this: object) {}),
 }));

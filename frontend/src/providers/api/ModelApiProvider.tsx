@@ -2,7 +2,7 @@ import {type ReactNode, useMemo} from "react";
 import {useApiBasePath} from "../../hooks/api/useApiBasePath.ts";
 import {axiosInstance} from "../../config/axios.ts";
 import {ModelApiContext} from "../../contexts/api/modelApiContext.ts";
-import {AdaptersApi, Configuration} from "@isin/model-service-client";
+import {AdaptersApi, Configuration} from "@paper-decentralized-ai/model-service-client";
 
 interface ModelApiProviderProps {
     children: ReactNode;
